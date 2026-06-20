@@ -1,0 +1,36 @@
+{
+  "name": "jp-ready-check",
+  "version": "0.1.0",
+  "description": "A 5-second Japan-market-readiness signal scan for any URL: hreflang ja, Japanese locale path, 特商法 (Tokushoho) page, JPY pricing, Japanese content.",
+  "bin": {
+    "jp-ready-check": "index.js"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "japan",
+    "japanese",
+    "localization",
+    "l10n",
+    "i18n",
+    "tokushoho",
+    "特商法",
+    "saas",
+    "readiness",
+    "market-entry",
+    "hreflang"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/greymoth-jp/jp-ready-check"
+  },
+  "homepage": "https://jp-ready.glovrex.com"
+}
