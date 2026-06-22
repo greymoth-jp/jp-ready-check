@@ -39,5 +39,5 @@ const checks = [
   }
   console.log('\n  surface scan only — IME/CJK input bugs and funnel-deep localization need a runtime check.');
   console.log('  deep version, every gap verified against your live site:  https://glovrex.com/check');
-  console.log('  index of 13 scored OSS dev-tools:  https://jp-ready.glovrex.com\n');
+  console.log('  index of scored OSS dev-tools (Cal.com, Medusa, Strapi …):  https://jp-ready.glovrex.com\n');
 })();
