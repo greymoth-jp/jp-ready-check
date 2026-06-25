@@ -1,14 +1,20 @@
 # jp-ready-check
 
-A 5-second **Japan-market-readiness** signal scan for any URL.
+**A 5-second Japan-market-readiness scan for any URL — one command, no install, score out of 5.**
 
-Foreign SaaS and dev-tools quietly lose Japanese users long before they show up in analytics — the `ja` locale exists but nothing points to it, there's no 特商法 page, pricing is USD-only, and the site is invisible in Japanese search. This is a quick surface check for five of those signals.
+[![npm](https://img.shields.io/npm/v/jp-ready-check?color=BB1133&label=npm)](https://www.npmjs.com/package/jp-ready-check)
+[![license](https://img.shields.io/badge/license-MIT-111111)](./LICENSE)
+![no install](https://img.shields.io/badge/install-none-23502f)
+
+Foreign SaaS and dev-tools quietly lose Japanese users long before it shows up in analytics — the `ja` locale exists but nothing points to it, there's no 特商法 page, pricing is USD-only, and the site is invisible in Japanese search. This checks five of those signals in one fetch, so you find the gap before a Japanese buyer silently bounces.
+
+## Quickstart
 
 ```bash
-npx github:greymoth-jp/jp-ready-check your-site.com
+npx jp-ready-check your-site.com
 ```
 
-No install. No account. It fetches the page once and reports a score out of five.
+That's it — no install, no account, no API key. It fetches the page once and prints a score out of 5 with the specific gaps. (Same thing, straight from source: `npx github:greymoth-jp/jp-ready-check your-site.com`.)
 
 ## What it checks
 
@@ -20,20 +26,25 @@ No install. No account. It fetches the page once and reports a score out of five
 | JPY pricing | USD-only pricing reads as "you are not our market." |
 | Japanese content | Whether any Japanese text / `lang="ja"` is present on the page at all. |
 
-## Example
+## Example output
 
 ```
-  jp-readiness of https://example.com:  2 / 5
+$ npx jp-ready-check notion.so
+
+  jp-readiness of https://notion.so:  3 / 5
 
    ✓ hreflang ja
-   ✗ ja locale path / switcher
-       no visible Japanese locale path or language switcher in the markup
+   ✓ ja locale path / switcher
    ✗ 特商法 (Tokushoho) page
        no 特商法 page — to a JP buyer its absence reads as "not set up to sell in Japan"
-   ✓ JPY pricing
-   ✗ Japanese content
-       no Japanese text/lang detected on this page
+   ✗ JPY pricing
+       no JPY pricing detected — USD reads as "you are not our market"
+   ✓ Japanese content
+
+  surface scan only — IME/CJK input bugs and funnel-deep localization need a runtime check.
 ```
+
+Green is present, red is a gap with the reason spelled out. Exit code is always `0` on a successful fetch (the score is in the output, not the exit code).
 
 ## Limits (read these)
 
